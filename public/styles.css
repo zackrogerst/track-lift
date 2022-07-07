@@ -182,7 +182,7 @@ footer {
 }
 
 button {
-	transition: 300ms;
+	transition: margin 300ms;
 	padding: 5px 10px;
 	border: none;
 	background-color: #33e602;
@@ -212,6 +212,7 @@ h5,
 h6,
 p,
 a {
+	font-family: 'Space Mono', monospace;
 	margin: 10px 0px;
 }
 
@@ -282,6 +283,38 @@ a {
 	background-image: radial-gradient(#33e602 1px, transparent 0);
 	background-size: 5px 5px;
 	z-index: -1;
+}
+
+#weightsIcon {
+	display: flex;
+	align-items: center;
+}
+
+#lgGrid {
+	width: 10px;
+	height: 45px;
+	background-image: radial-gradient(#33e602 1px, transparent 0);
+	background-size: 5px 5px;
+}
+
+#mdGrid {
+	width: 10px;
+	height: 35px;
+	background-image: radial-gradient(#33e602 1px, transparent 0);
+	background-size: 5px 5px;
+}
+
+#smGrid {
+	width: 10px;
+	height: 15px;
+	background-image: radial-gradient(#33e602 1px, transparent 0);
+	background-size: 5px 5px;
+}
+
+.logoText {
+	padding-left: 10px;
+	font-size: 55px;
+	font-weight: 900;
 }
 
 .redirectOption {
