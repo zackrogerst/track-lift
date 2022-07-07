@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express')
-const path = require('path')
+const path = require('path') ///// needed?
 
 const app = express()
 
@@ -39,10 +39,11 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../landing-page.html')))
-app.get('/css', (req, res) => res.sendFile(path.join(__dirname, '../styles.css')))
-app.get('/js', (req, res) => res.sendFile(path.join(__dirname, '../main.js')))
+/////needed?
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../views/index.ejs')))
+app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '../views/login.ejs')))
+app.get('/register', (req, res) => res.sendFile(path.join(__dirname, '../views/register.ejs')))
+app.get('/css', (req, res) => res.sendFile(path.join(__dirname, '../public/styles.css')))
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.name })
