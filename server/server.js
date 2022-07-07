@@ -36,6 +36,12 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
+
+
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../landing-page.html')))
+app.get('/css', (req, res) => res.sendFile(path.join(__dirname, '../styles.css')))
+app.get('/js', (req, res) => res.sendFile(path.join(__dirname, '../main.js')))
+
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.name })
 })
