@@ -56,8 +56,8 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs')
     res.sendFile(path.join(__dirname, '../views/register.ejs'))
+    res.render('register.ejs')
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
