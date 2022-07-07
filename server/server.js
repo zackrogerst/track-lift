@@ -40,13 +40,13 @@ app.use(methodOverride('_method'))
 
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/index.ejs'))
     res.render('index.ejs', { name: req.user.name })
+    res.sendFile(path.join(__dirname, '../views/index.ejs'))
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/login.ejs'))
     res.render('login.ejs')
+    res.sendFile(path.join(__dirname, '../views/login.ejs'))
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -56,8 +56,8 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/register.ejs'))
     res.render('register.ejs')
+    res.sendFile(path.join(__dirname, '../views/register.ejs'))
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
