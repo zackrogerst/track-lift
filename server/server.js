@@ -39,18 +39,14 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 
-/////needed?
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../views/index.ejs')))
-app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '../views/login.ejs')))
-app.get('/register', (req, res) => res.sendFile(path.join(__dirname, '../views/register.ejs')))
-app.get('/css', (req, res) => res.sendFile(path.join(__dirname, '../public/styles.css')))
-
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.name })
+    res.sendFile(path.join(__dirname, '../views/index.ejs'))
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs')
+    res.sendFile(path.join(__dirname, '../views/login.ejs'))
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -61,6 +57,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('register.ejs')
+    res.sendFile(path.join(__dirname, '../views/register.ejs'))
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
