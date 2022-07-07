@@ -5,6 +5,7 @@ if(process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 
+
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
@@ -22,6 +23,8 @@ const users = [] ////temporary
 
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static("public"));
+
 app.use(flash())
 app.use(session({
     secret: process.env.SESSION_SECRET,

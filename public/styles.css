@@ -1,0 +1,280 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* END RESET STYLES */
+
+::-moz-selection {
+	color: #1a1a1a;
+	background: #33e602;
+}
+
+::selection {
+	color: #1a1a1a;
+	background: #33e602;
+}
+
+* {
+	font-family: 'Space Mono', monospace;
+	font-size: 16px;
+	text-decoration: none;
+	border: none;
+}
+
+*:visited {
+	color: #33e602;
+}
+
+body {
+	background-color: #2e2e2e;
+	color: white;
+}
+
+header {
+	height: 10vh;
+}
+
+footer {
+	height: 10vh;
+}
+
+.buttonBkg {
+	margin: 10px 0px 0px 0px;
+	width: fit-content;
+	background-image: radial-gradient(circle at 1px 1px, #33e602 1px, transparent 0);
+	background-size: 8px 8px;
+}
+
+button {
+	transition: 300ms;
+	padding: 5px 10px;
+	border: none;
+	border-radius: 0px;
+	background-color: #33e602;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+button:hover {
+	margin-left: 15px;
+}
+
+
+input {
+	width: 60%;
+	margin: 2px 0px;
+	padding: 0px 10px;
+	border-left: 5px solid #33e602;
+	background-color: #2e2e2e;
+	color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+	margin: 10px 0px;
+}
+
+h1 {
+	text-transform: uppercase;
+	font-size: 30px;
+	font-weight: 900;
+}
+
+h2 {
+	text-transform: uppercase;
+	font-size: 30px;
+}
+
+h3,
+h4 {
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 900;
+}
+
+h5 {
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: 900;
+	color: #33e602;
+}
+
+h6 {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 900;
+	color: #33e602;
+}
+
+a {
+	text-decoration: underline 2px #33e602;
+}
+
+.formMain {
+	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.formCard {
+	background-color: #1a1a1a;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	min-width: 400px;
+}
+
+.formCard div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.grid {
+	position: relative;
+	left: 442px;
+	top: -38px;
+	width: 55px;
+	height: 55px;
+	background-image: radial-gradient(#33e602 1px, transparent 0);
+	background-size: 8px 8px;
+	z-index: -1;
+}
+
+.redirectOption {
+	margin: 60px 0px 0px 0px;
+}
