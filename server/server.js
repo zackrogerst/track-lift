@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
@@ -14,12 +14,12 @@ const methodOverride = require('method-override')
 
 const initializePassport = require('./passport-config')
 initializePassport(
-    passport, 
+    passport,
     email => users.find(user => user.email === email),
     id => users.find(user => user.id === id)
-)
+) ///// db?
 
-const users = [] ////temporary
+const users = [] ////db?
 
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
@@ -31,6 +31,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
@@ -61,7 +62,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword
-        })    //////remove when db
+        })    //////db?
         res.redirect('/login')
     } catch {
         res.redirect('/register')
@@ -71,22 +72,22 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 app.delete('/logout', checkAuthenticated, function (req, res, next) {
     req.logOut(function (err) {
-      if (err) {
-        return next(err)
-      }
-      res.redirect('/login')
+        if (err) {
+            return next(err)
+        }
+        res.redirect('/login')
     })
-  })
+})
 
 function checkAuthenticated(req, res, next) {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
         return next()
     }
     res.redirect('/login')
 }
 
 function checkNotAuthenticated(req, res, next) {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
         return res.redirect('/')
     }
     next()
