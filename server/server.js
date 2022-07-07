@@ -40,11 +40,15 @@ app.use(methodOverride('_method'))
 
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', { name: req.user.name }).sendFile(path.join(__dirname, '../views/index.ejs'))
+    res.render('index.ejs', { name: req.user.name }, function (err, html) {
+        res.send(html)
+    })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('login.ejs').sendFile(path.join(__dirname, '../views/login.ejs'))
+    res.render('login.ejs', function (err, html) {
+        res.send(html)
+    })
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -54,7 +58,9 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs').sendFile(path.join(__dirname, '../views/register.ejs'))
+    res.render('register.ejs', function (err, html) {
+        res.send(html)
+    })
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
@@ -99,5 +105,5 @@ function checkNotAuthenticated(req, res, next) {
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
 })
