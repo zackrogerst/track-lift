@@ -177,7 +177,7 @@ footer {
 .buttonBkg {
 	margin: 10px 0px 0px 0px;
 	width: fit-content;
-	background-image: radial-gradient(circle at 1px 1px, #33e602 1px, transparent 0);
+	background-image: radial-gradient(circle at 2px 2px, #33e602 1px, transparent 0);
 	background-size: 5px 5px;
 }
 
@@ -185,7 +185,6 @@ button {
 	transition: 300ms;
 	padding: 5px 10px;
 	border: none;
-	border-radius: 0px;
 	background-color: #33e602;
 	font-size: 16px;
 	font-weight: 900;
@@ -276,8 +275,8 @@ a {
 
 .grid {
 	position: relative;
-	left: 442px;
-	top: -38px;
+	left: 440px;
+	top: -40px;
 	width: 55px;
 	height: 55px;
 	background-image: radial-gradient(#33e602 1px, transparent 0);
