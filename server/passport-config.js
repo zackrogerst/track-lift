@@ -5,7 +5,7 @@ function initialize(passport, getUserByEmail, getUserById) {
     const authenticateUser = async (email, password, done) => {
         const user = getUserByEmail(email)
         if (user == null) {
-            return done(null, false, { message: 'No User With That Email' }) 
+            return done(null, false, { message: 'No User With That Email' })
             ////null is no server error, false for no user email
         }
 
@@ -13,7 +13,7 @@ function initialize(passport, getUserByEmail, getUserById) {
             if (await bcrypt.compare(password, user.password)) {
                 return done(null, user)
             } else {
-                return done(null, false, { message: 'Password Incorrect' }) 
+                return done(null, false, { message: 'Password Incorrect' })
                 ////null is no server error, false for no user pass
             }
         } catch (e) {
@@ -21,7 +21,7 @@ function initialize(passport, getUserByEmail, getUserById) {
         }
     }
     passport.use(new LocalStrategy({ usernameField: 'email' },
-     authenticateUser))
+        authenticateUser))
     passport.serializeUser((user, done) => done(null, user.id))
     passport.deserializeUser((id, done) => {
         return done(null, getUserById(id))

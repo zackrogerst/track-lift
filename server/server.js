@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express')
-const path = require('path') ///// needed?
+const path = require('path')
 
 const app = express()
 
