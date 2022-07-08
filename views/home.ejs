@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css">
+</head>
+
+<body>
+    <header>
+        <article id="weightsIcon">
+            <div id="smGrid"></div>
+            <div id="mdGrid"></div>
+            <div id="lgGrid"></div>
+            <p class="logoText">TRACKLIFT</p>
+        </article>
+    </header>
+
+    <main>
+        <h1>Hi <%= name %>
+        </h1>
+        <form action="/logout?_method=DELETE" method="POST">
+            <div class="buttonBkg"><button type="submit">Log Out</button></div>
+        </form>
+
+        <section>
+            <h2>Add a Lift</h2>
+            <form id="addALift">
+                <label>Lift Type:</label>
+                <div id="radioLiftType">
+                    <input type="radio" id="liftType1" name="liftType" value="squat" required>
+                    <label for="contactChoice1">Squat</label>
+
+                    <input type="radio" id="liftType2" name="liftType" value="bench">
+                    <label for="contactChoice1">Bench</label>
+
+                    <input type="radio" id="liftType3" name="liftType" value="deadlift">
+                    <label for="contactChoice1">Deadlift</label>
+                </div>
+
+                <div>
+                    <label>Weight Lifted</label>
+                    <input class="addALiftInput" type="number" id="weightAmount" placeholder="in LBS" required>
+                </div>
+
+                <div>
+                    <label>Reps Completed</label>
+                    <input class="addALiftInput" type="number" id="repsCompleted" placeholder="Number of Repetitions" required>
+                </div>
+
+                <div>
+                    <label>RPE </label>
+                    <input class="addALiftInput" type="number" id="rpeExertion" min="1" max="10" placeholder="Rating of Perceived Exertion 1-10" required>
+                </div>
+
+                <div>
+                    <label>Additional Notes</label>
+                    <input class="addALiftInput" type="text" id="liftNotes" maxlength="200" placeholder="Max 200 characters">
+                </div>
+
+                <div>
+                    <div class="buttonBkg"><button type="submit">Add Lift</button></div>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -2,7 +2,14 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-const users = [] ////db?
+const users = [
+    {
+      id: '1657295155237',
+      name: '2@2',
+      email: '2@2',
+      password: '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa'
+    }
+  ] ////db?
 
 const express = require('express')
 const path = require('path')
@@ -31,7 +38,7 @@ app.use(methodOverride('_method'))
 /////////////////// PAGES ///////////////////
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', { name: req.user.name }, function (err, html) {
+    res.render('home.ejs', { name: req.user.name }, function (err, html) {
         res.send(html)
     })
 })

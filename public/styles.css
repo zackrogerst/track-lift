@@ -170,6 +170,10 @@ header {
 	max-width: 300px;
 }
 
+main {
+	padding: 5vw;
+}
+
 footer {
 	height: 10vh;
 }
@@ -252,6 +256,10 @@ a {
 	text-decoration: underline 2px #33e602;
 }
 
+a:visited {
+	color: #33e602;
+}
+
 .formMain {
 	height: 80vh;
 	display: flex;
@@ -319,4 +327,18 @@ a {
 
 .redirectOption {
 	margin: 60px 0px 0px 0px;
+}
+
+.addALiftInput {
+	display: block;
+}
+
+::placeholder {
+	color: rgba(255, 255, 255, 0.74);
+}
+
+#addALift {
+	max-width: 600px;
+	background-color: #0a081e;
+	padding: 40px;
 }
