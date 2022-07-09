@@ -8,13 +8,21 @@ const liftNotes = document.getElementById("liftNotes");
 
 ////////////////////////////////////
 
-const clearDivCallback = e => e.innerHTML = ``;
+const clearDivCallback = elm => elm.innerHTML = ``;
+const errCallback = err => console.log(err.response.data);
+
+////////////////////////////////////
 
 
-
-
-
-
+function sendNewLift(body) {
+    // let { liftId } = body;
+    axios.post("http://localhost:3000/api/lifts/", body) ////// local host?
+        .then(res => {
+            console.log(res.data);
+            // Add lift to history;
+        })
+        .catch(errCallback);
+}
 
 
 function addLiftFormHandler(event) {
@@ -36,9 +44,14 @@ function addLiftFormHandler(event) {
         liftNotes: checkStr(liftNotes.value)
     }
     
-    console.table(body)
-    form.reset()
+    console.table(body);
+
+    liftType.value = "";
+    weightAmount.value = "";
+    repsCompleted.value = "";
+    rpeExertion.value = "";
+    liftNotes.value = "";
 }
 
 
-addLiftForm.addEventListener('submit', addLiftFormHandler)
+addLiftForm.addEventListener('submit', addLiftFormHandler);
