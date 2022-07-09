@@ -66,6 +66,10 @@ app.get('/jsHome', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/home.js'))
 })
 
+app.get('/axios', (req, res) => {
+    res.sendFile(path.join(__dirname, './axios.min.js'))
+})
+
 /////////////////// USER ACCOUNT ///////////////////
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {

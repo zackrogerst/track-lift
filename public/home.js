@@ -13,10 +13,9 @@ const errCallback = err => console.log(err.response.data);
 
 ////////////////////////////////////
 
-
 function sendNewLift(body) {
     // let { liftId } = body;
-    axios.post("http://localhost:3000/api/lifts/", body) ////// local host?
+    axios.post("/api/lifts/", body) ////// local host?
         .then(res => {
             console.log(res.data);
             // Add lift to history;
@@ -28,7 +27,7 @@ function sendNewLift(body) {
 function addLiftFormHandler(event) {
     event.preventDefault();
 
-    const checkStr = element => element ? element : null;
+    const checkStr = str => str ? str : null;
 
     const date = new Date();
     let currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
@@ -43,7 +42,7 @@ function addLiftFormHandler(event) {
         rpeExertion: +rpeExertion.value,
         liftNotes: checkStr(liftNotes.value)
     }
-    
+
     console.table(body);
 
     liftType.value = "";
@@ -53,5 +52,6 @@ function addLiftFormHandler(event) {
     liftNotes.value = "";
 }
 
+////////////////////////////////////
 
 addLiftForm.addEventListener('submit', addLiftFormHandler);
