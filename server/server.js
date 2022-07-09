@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const users = [
     {
       id: '1657295155237',
-      name: '2@2',
+      name: '2',
       email: '2@2',
       password: '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa'
     }
@@ -20,6 +20,7 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const methodOverride = require('method-override')
 const initializePassport = require('./passport-config')
+
 initializePassport(
     passport,
     email => users.find(user => user.email === email),
@@ -38,7 +39,7 @@ app.use(methodOverride('_method'))
 /////////////////// PAGES ///////////////////
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('home.ejs', { name: req.user.name }, function (err, html) {
+    res.render('home.ejs', { name: req.user.name, email:req.user.email }, function (err, html) {
         res.send(html)
     })
 })
@@ -53,6 +54,16 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('register.ejs', function (err, html) {
         res.send(html)
     })
+})
+
+/////////////////// FILES ///////////////////
+
+app.get('/css', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/styles.css'))
+})
+
+app.get('/jsHome', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/home.js'))
 })
 
 /////////////////// USER ACCOUNT ///////////////////

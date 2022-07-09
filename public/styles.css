@@ -128,7 +128,8 @@ table {
 	border-spacing: 0;
 }
 
-/* END RESET STYLES */
+/* ^^^ RESET ^^^ ---------------------------------------------------------------- */
+
 
 :root {
 	--dark-text: #101429;
@@ -148,6 +149,7 @@ table {
 }
 
 * {
+	box-sizing: content-box;
 	font-family: 'Space Mono', monospace;
 	font-size: 16px;
 	text-decoration: none;
@@ -156,6 +158,12 @@ table {
 
 *:visited {
 	color: var(--highlight-color);
+}
+
+
+::placeholder {
+	color: rgba(255, 255, 255, 0.74);
+	font-size: 14px;
 }
 
 body {
@@ -206,13 +214,21 @@ button:hover {
 }
 
 
-input {
+input,
+select,
+textarea,
+option {
 	width: 60%;
 	margin: 2px 0px;
 	padding: 0px 10px;
+	border: 1px solid var(--dark-text);
 	border-left: 5px solid var(--highlight-color);
 	background-color: var(--background-color);
 	color: white;
+}
+
+label {
+	margin: 0 20px 0 0;
 }
 
 h1,
@@ -235,7 +251,7 @@ h1 {
 
 h2 {
 	text-transform: uppercase;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 h3,
@@ -267,6 +283,9 @@ a:visited {
 	color: var(--highlight-color);
 }
 
+/* ^^^ GLOBAL ^^^ ---------------------------------------------------------------- */
+/* ------------------------------------------ vvv LOGIN/REGISTER/FORM SPECIFIC vvv */
+
 .formMain {
 	height: 80vh;
 	display: flex;
@@ -289,7 +308,7 @@ a:visited {
 	align-items: center;
 }
 
-.grid {
+.gridOfDots {
 	position: relative;
 	left: 440px;
 	top: -40px;
@@ -304,6 +323,13 @@ a:visited {
 	display: flex;
 	align-items: center;
 }
+
+.redirectOption {
+	margin: 60px 0px 0px 0px;
+}
+
+/* ^^^ LOGIN/REGISTER PAGE SPECIFIC ^^^ --------------------------- */
+/* ------------------------------------------ vvv LOGO SPECIFIC vvv */
 
 #lgGrid {
 	width: 10px;
@@ -332,24 +358,13 @@ a:visited {
 	font-weight: 900;
 }
 
-.redirectOption {
-	margin: 60px 0px 0px 0px;
+.hidden {
+	display: none;
+	width: 0px;
+	height: 0px;
+	padding: 0px;
+	margin: 0px;
+	border: none;
 }
 
-
-#addALift {
-	max-width: 600px;
-	/* background-color: var(--second-color); */
-	/* padding: 40px; */
-}
-
-.addALiftInput{
-	display: block;
-	background-color: var(--second-color);
-	margin: 15px 0px;
-}
-
-::placeholder {
-	color: rgba(255, 255, 255, 0.74);
-	font-size: 14px;
-}
+/* ^^^ LOGO SPECIFIC ^^^ ------------------------------------------ */

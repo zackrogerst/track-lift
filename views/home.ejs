@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="shortcut icon" type="image/jpg" href="Assets\favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="/css">
 </head>
 
@@ -23,25 +23,32 @@
     </header>
 
     <main>
-        <h1>Hi <%= name %>
-        </h1>
-        <form action="/logout?_method=DELETE" method="POST">
-            <div class="buttonBkg"><button type="submit">Log Out</button></div>
-        </form>
+        <section>
+            <h1>Hi <%= name %>
+            </h1>
+            <form action="/logout?_method=DELETE" method="POST">
+                <div class="buttonBkg"><button type="submit">Log Out</button></div>
+            </form>
+        </section>
 
         <section>
             <h2>Add a Lift</h2>
-            <form id="addALift">
-                <label>Lift Type:</label>
-                <div id="radioLiftType">
-                    <input type="radio" id="liftType1" name="liftType" value="squat" required>
-                    <label for="contactChoice1">Squat</label>
+            <form id="addALift" class="formCard">
+                <div>
+                    <select id="userEmail" class="hidden">
+                        <option selected><%= email %></option>
+                    </select>
+                </div>
 
-                    <input type="radio" id="liftType2" name="liftType" value="bench">
-                    <label for="contactChoice1">Bench</label>
 
-                    <input type="radio" id="liftType3" name="liftType" value="deadlift">
-                    <label for="contactChoice1">Deadlift</label>
+                <div>
+                    <label for="liftType">Lift Type:</label>
+                    <br>
+                    <select id="liftType" required>
+                        <option value="Squat" selected>Squat</option>
+                        <option value="Bench">Bench</option>
+                        <option value="Deadlift">Deadlift</option>
+                    </select>
                 </div>
 
                 <div>
@@ -56,15 +63,15 @@
                 </div>
 
                 <div>
-                    <label>RPE </label>
+                    <label>RPE</label>
                     <input class="addALiftInput" type="number" id="rpeExertion" min="1" max="10"
                         placeholder="Rating of Perceived Exertion 1-10" required>
                 </div>
 
                 <div>
                     <label>Additional Notes</label>
-                    <input class="addALiftInput" type="text" id="liftNotes" maxlength="200"
-                        placeholder="Max 200 characters">
+                    <textarea class="addALiftInput" id="liftNotes" rows="3" cols="30" maxlength="200"
+                        placeholder="Max 200 characters"></textarea>
                 </div>
 
                 <div>
@@ -72,7 +79,12 @@
                 </div>
             </form>
         </section>
+
+        <section id="liftHistoryRow">
+            <h2>Lift History</h2>
+        </section>
     </main>
+    <script src="/jsHome"></script>
 </body>
 
 </html>
