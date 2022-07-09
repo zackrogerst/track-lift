@@ -20,26 +20,24 @@ const clearDivCallback = e => e.innerHTML = ``;
 function addLiftFormHandler(event) {
     event.preventDefault();
 
+    const checkStr = element => element ? element : null;
+
     const date = new Date();
     let currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
 
     let body = {
         user: userEmail.value,
+        liftId: Date.now().toString(),
         date: currentDate,
         liftType: liftType.value,
         weightAmount: +weightAmount.value,
         repsCompleted: +repsCompleted.value,
         rpeExertion: +rpeExertion.value,
-        liftNotes: liftNotes.value
+        liftNotes: checkStr(liftNotes.value)
     }
-
+    
     console.table(body)
-
-    liftType.value = "";
-    weightAmount.value = "";
-    repsCompleted.value = "";
-    rpeExertion.value = "";
-    liftNotes.value = "";
+    form.reset()
 }
 
 
