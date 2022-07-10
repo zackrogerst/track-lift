@@ -2,12 +2,10 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-const {} = require("./controller.js")
-
 const users = [
     {
       id: '1657295155237',
-      name: 'admin',
+      name: '2',
       email: '2@2',
       password: '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa'
     }
@@ -21,7 +19,7 @@ const session = require('express-session')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const methodOverride = require('method-override')
-const initializePassport = require('../config/passport-config.js')
+const initializePassport = require('./passport-config')
 
 initializePassport(
     passport,
@@ -60,17 +58,11 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 /////////////////// FILES ///////////////////
 
-app.get('/css', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/styles.css'))
-})
+app.get('/css', (req, res) => res.sendFile(path.join(__dirname, '../public/styles.css')))
 
-app.get('/jsHome', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/home.js'))
-})
+app.get('/jsHome', (req, res) => res.sendFile(path.join(__dirname, '../public/home.js')))
 
-app.get('/axios', (req, res) => {
-    res.sendFile(path.join(__dirname, '../config/axios-config.min.js'))
-})
+app.get('/axios', (req, res) => res.sendFile(path.join(__dirname, '../config/axios-config.js')))
 
 /////////////////// USER ACCOUNT ///////////////////
 
@@ -84,7 +76,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         users.push({
-            user_id: Date.now().toString(),
+            id: Date.now().toString(),
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword
