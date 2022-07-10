@@ -19,7 +19,7 @@ const session = require('express-session')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const methodOverride = require('method-override')
-const initializePassport = require('./passport-config')
+const initializePassport = require('../config/passport-config')
 
 initializePassport(
     passport,
