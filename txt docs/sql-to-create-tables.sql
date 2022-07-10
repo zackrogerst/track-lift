@@ -1,8 +1,9 @@
 -- CREATE TABLE users (
--- 	user_id SERIAL PRIMARY KEY NOT NULL, 
--- 	name VARCHAR(255) NOT NULL, 
--- 	email VARCHAR(255) NOT NULL, 
--- 	password VARCHAR(255) NOT NULL
+--     user_id SERIAL PRIMARY KEY NOT NULL, 
+--     id VARCHAR(255) NOT NULL,
+--     name VARCHAR(255) NOT NULL, 
+--     email VARCHAR(255) NOT NULL, 
+--     password VARCHAR(255) NOT NULL
 -- );
 
 -- CREATE TABLE lifts (
@@ -16,12 +17,17 @@
 -- 	lift_notes VARCHAR(255)
 -- );
 
--- INSERT INTO users (name, email, password)
--- VALUES ('admin', 'admin@tracklift', '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa');
+-- INSERT INTO users (id, name, email, password)
+-- VALUES ('1657295155237', '2', '2@2', '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa');
 
 SELECT * FROM users;
 
-UPDATE users
-SET name = 'Admin' 
-email = '2@2'
-WHERE user_id = 1;
+
+-- DELETE FROM users
+-- WHERE email = 'dev@dev';
+
+
+-- UPDATE users
+-- SET name = '2',
+-- email = '2@2'
+-- WHERE user_id = 1;

@@ -15,7 +15,7 @@ const errCallback = err => console.log(err.response.data);
 
 function sendNewLift(body) {
     // let { liftId } = body;
-    axios.post("/api/lifts/", body) ////// local host?
+    axios.post("/api/lifts", body) ////// local host?
         .then(res => {
             console.log(res.data);
             // Add lift to history;

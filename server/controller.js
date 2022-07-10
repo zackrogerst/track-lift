@@ -12,6 +12,4 @@ const sequelize = new Sequelize(DATABASE_URL, {
     }
 });
 
-module.exports = {
-    
-}
+module.exports = {}
