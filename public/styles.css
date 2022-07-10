@@ -149,7 +149,6 @@ table {
 }
 
 * {
-	box-sizing: content-box;
 	font-family: 'Space Mono', monospace;
 	font-size: 16px;
 	text-decoration: none;
@@ -213,11 +212,15 @@ button:hover {
 	margin-left: 15px;
 }
 
+form {
+	caret-color: var(--highlight-color);
+}
 
 input,
 select,
 textarea,
 option {
+	box-sizing: border-box;
 	width: 60%;
 	margin: 2px 0px;
 	padding: 0px 10px;
@@ -287,6 +290,7 @@ a:visited {
 /* ------------------------------------------ vvv LOGIN/REGISTER/FORM SPECIFIC vvv */
 
 .formMain {
+	box-sizing: border-box;
 	height: 80vh;
 	display: flex;
 	flex-direction: column;
