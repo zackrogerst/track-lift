@@ -2,28 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
+const { registerUser } = require('./controller.js')
+const { getUsers } = require('./utils.js')
 
-const DATABASE_URL = process.env.DATABASE_URL;
-const Sequelize = require("sequelize");
-
-const sequelize = new Sequelize(DATABASE_URL, {
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
-});
-
-
-const localUsers = [
-    // {
-    //     id: '1657295155237',
-    //     name: '2',
-    //     email: '2@2',
-    //     password: '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa'
-    // }
-]
 
 const express = require('express')
 const path = require('path')
@@ -35,11 +16,15 @@ const passport = require('passport')
 const methodOverride = require('method-override')
 const initializePassport = require('./passport-config')
 
-initializePassport(
-    passport,
-    email => localUsers.find(user => user.email === email),
-    id => localUsers.find(user => user.id === id)
-)
+const refreshAccounts = () => getUsers().then(dbRes => {
+    initializePassport(
+        passport,
+        email => dbRes.find(user => user.email === email),
+        id => dbRes.find(user => user.id === id)
+    )
+})
+
+refreshAccounts()
 
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
@@ -74,31 +59,7 @@ app.post('/loginUser', checkNotAuthenticated, passport.authenticate('local', {
     failureFlash: true
 }))
 
-app.post('/registerUser', checkNotAuthenticated, async (req, res) => {
-    const { name, email, password } = req.body
-    let id = Date.now().toString()
-    const hashedPassword = await bcrypt.hash(password, 10)
-
-    await sequelize.query(`
-    INSERT INTO users (id, name, email, password)
-    VALUES ('${id}', '${name}', '${email}', '${hashedPassword}');
-    `)
-        .then(dbRes => {
-            try {
-                localUsers.push({
-                    id: Date.now().toString(),
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: hashedPassword
-                })
-                res.redirect('/login')
-            } catch {
-                res.redirect('/register')
-            }
-            console.log("localUsers:", localUsers)
-        })
-        .catch(err => console.log(err))
-})
+app.post('/registerUser', checkNotAuthenticated, registerUser)
 
 app.delete('/logout', checkAuthenticated, function (req, res, next) {
     req.logOut(function (err) {
