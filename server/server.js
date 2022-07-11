@@ -11,12 +11,15 @@ const path = require('path')
 const app = express()
 const flash = require('express-flash')
 const session = require('express-session')
+const cors = require("cors");
+app.use(cors());
 
 const methodOverride = require('method-override')
 const bcrypt = require('bcrypt')
 
 const passport = require('passport')
 const initializePassport = require('./passport-config')
+
 const refreshAccounts = () => getUsers().then(dbRes => {
     initializePassport(
         passport,
@@ -28,6 +31,7 @@ const refreshAccounts = () => getUsers().then(dbRes => {
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static("public"));
+app.use(express.json());
 app.use(flash())
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }))
 app.use(passport.initialize())

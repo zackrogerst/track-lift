@@ -35,46 +35,38 @@ module.exports = {
             .catch(err => console.log(err))
     },
     addLift: async (req, res) => {
-        console.log(req.body.userEmail)
-        let {
-            userEmail,
+        const { userEmail,
             liftId,
             date,
             liftType,
             weightAmount,
             repsCompleted,
-            rpeExertion, 
-            liftNotes
-        } = req.body;
+            rpeExertion,
+            liftNotes } = req.body;
 
-        let userId = undefined;
+        let userId;
 
         await sequelize.query(`
         SELECT * FROM users
         WHERE email = '${userEmail}'
         `)
-        .then(dbRes => {
-            // userId = dbRes[0].user_id
-            console.log(dbRes[0])
-            console.log("------------")
-            console.log(dbRes.fields)
-            console.log("------------")
-            console.log(dbRes.data)
-        })
+            .then(dbRes => {
+                userId = dbRes[0][0].user_id
+            })
 
-        // await sequelize.query(`
-        // INSERT INTO lifts (lift_id, user_id, lift_name, weight, reps, rpe, add_date, lift_notes)
-        // VALUES ('${liftId}', '${userId}','${liftType}', '${weightAmount}', '${repsCompleted}', '${rpeExertion}', '${date}', '${liftNotes}');
-        // `)
-        //     .then(dbRes => {
-        //         try {
-        //             console.log(`lift added`)
-        //             res.send(200)
-        //         } catch {
-        //             console.log("error adding lift")
-        //             res.send(400)
-        //         }
-        //     })
-        //     .catch(err => console.log(err))
+        await sequelize.query(`
+        INSERT INTO lifts (user_id, lift_name, weight, reps, rpe, add_date, lift_notes)
+        VALUES ('${userId}','${liftType}', '${weightAmount}', '${repsCompleted}', '${rpeExertion}', '${date}', '${liftNotes}');
+        `)
+            .then(dbRes => {
+                try {
+                    console.log(`lift added`)
+                    res.send(200)
+                } catch {
+                    console.log("error adding lift")
+                    res.send(400)
+                }
+            })
+            .catch(err => console.log(err))
     }
 }

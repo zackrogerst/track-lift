@@ -7,7 +7,7 @@
 -- );
 
 -- CREATE TABLE lifts (
--- 	lift_id INTEGER PRIMARY KEY NOT NULL,
+-- 	lift_id SERIAL PRIMARY KEY NOT NULL,
 -- 	user_id INTEGER references users(user_id) NOT NULL,
 -- 	lift_name VARCHAR(100) NOT NULL, 
 -- 	weight INTEGER NOT NULL,
@@ -18,9 +18,9 @@
 -- );
 
 -- INSERT INTO users (id, name, email, password)
--- VALUES ('1657295155237', '2', '2@2', '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa');
+-- VALUES ('1657295155237', 'name', '2@2', '$2b$10$elEg92E.y5pTH7Ro3hqSAuinPKoq4CQ77Y7C0inyP.XfAYzJ7LkYa');
 
-SELECT * FROM users;
+-- SELECT * FROM users;
 
 
 -- DELETE FROM users

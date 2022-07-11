@@ -34,7 +34,6 @@ function addLiftFormHandler(event) {
 
     let body = {
         userEmail: userEmail.value,
-        liftId: Date.now().toString(),
         date: currentDate,
         liftType: liftType.value,
         weightAmount: +weightAmount.value,
