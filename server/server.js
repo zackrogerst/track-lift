@@ -68,7 +68,7 @@ app.get('/axios', (req, res) => res.sendFile(path.join(__dirname, '../config/axi
 
 /////////////////// USER ACCOUNT ///////////////////
 
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+app.post('/loginUser', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
