@@ -24,8 +24,6 @@ const refreshAccounts = () => getUsers().then(dbRes => {
     )
 })
 
-refreshAccounts()
-
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static("public"));
@@ -73,6 +71,8 @@ app.delete('/logout', checkAuthenticated, function (req, res, next) {
 /////////////////// USER AUTH ///////////////////
 
 function checkAuthenticated(req, res, next) {
+    refreshAccounts()
+
     if (req.isAuthenticated()) {
         return next()
     }
@@ -80,6 +80,8 @@ function checkAuthenticated(req, res, next) {
 }
 
 function checkNotAuthenticated(req, res, next) {
+    refreshAccounts()
+
     if (req.isAuthenticated()) {
         return res.redirect('/')
     }
