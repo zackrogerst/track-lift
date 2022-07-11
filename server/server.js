@@ -11,11 +11,12 @@ const path = require('path')
 const app = express()
 const flash = require('express-flash')
 const session = require('express-session')
-const bcrypt = require('bcrypt')
-const passport = require('passport')
-const methodOverride = require('method-override')
-const initializePassport = require('./passport-config')
 
+const methodOverride = require('method-override')
+const bcrypt = require('bcrypt')
+
+const passport = require('passport')
+const initializePassport = require('./passport-config')
 const refreshAccounts = () => getUsers().then(dbRes => {
     initializePassport(
         passport,
