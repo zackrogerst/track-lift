@@ -3,20 +3,3 @@ register:
 2. check if exists already, 
 	if yes, error
 	if no, add to database then redirect to login.
-
-
-login: 
-1. query database using sequelize for form input values, return those to the server 
-2. check if exist
-	if no, error.
-	if yes, push to local users array and checkAuthourized, 
-		if no, err, 
-		if yes, login and redirect to home.
-
-
-logout: 
-1. clear local users array and logout redirect to login
-
-
-add lift:
-1. post values to db

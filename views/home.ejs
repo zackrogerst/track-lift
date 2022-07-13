@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
@@ -20,73 +19,98 @@
             <div id="lgGrid"></div>
             <p class="logoText">TRACKLIFT</p>
         </article>
+        <form action="/logout?_method=DELETE" method="POST">
+            <button id="logoutBtn" type="submit">Log Out</button>
+        </form>
     </header>
 
-    <main>
-        <section>
-            <h1>Hi <%= name %>
-            </h1>
-            <form action="/logout?_method=DELETE" method="POST">
-                <div class="buttonBkg"><button type="submit">Log Out</button></div>
-            </form>
-        </section>
+    <div id="container">
+        <main id="homeMain">
+            <section id="heroSection">
+                <h1>Welcome To Your Tracklift Dashboard, <%= name %>
+                </h1>
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button id="logoutBtn" type="submit">Log Out</button>
+                </form>
+            </section>
 
-        <section>
-            <h2>Add a Lift</h2>
-            <form id="addALift" class="formCard">
-                <div>
-                    <select id="userEmail" class="hidden">
-                        <option selected>
-                            <%= email %>
-                        </option>
-                    </select>
-                </div>
+            <section id="homeDashboard">
+                <form id="addALift" class="formCard">
+                    <h2 id="addALiftHeading">Add a Lift</h2>
+                    <div>
+                        <select id="userEmail" class="hidden">
+                            <option selected>
+                                <%= email %>
+                            </option>
+                        </select>
+                    </div>
 
 
-                <div>
-                    <label for="liftType">Lift Type:</label>
-                    <br>
-                    <select id="liftType" required>
-                        <option value="Squat" selected>Squat</option>
-                        <option value="Bench">Bench</option>
-                        <option value="Deadlift">Deadlift</option>
-                    </select>
-                </div>
+                    <div>
+                        <label for="liftType">Lift Type:</label>
+                        <select id="liftType" required>
+                            <option value="Squat" selected>Squat</option>
+                            <option value="Bench">Bench</option>
+                            <option value="Deadlift">Deadlift</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label>Weight Lifted</label>
-                    <input class="addALiftInput" type="number" id="weightAmount" placeholder="in LBS" required>
-                </div>
+                    <div>
+                        <label>Weight Lifted</label>
+                        <input class="addALiftInput" type="number" id="weightAmount" placeholder="in LBS" required>
+                    </div>
 
-                <div>
-                    <label>Reps Completed</label>
-                    <input class="addALiftInput" type="number" id="repsCompleted" placeholder="Number of Repetitions"
-                        required>
-                </div>
+                    <div>
+                        <label>Reps Completed</label>
+                        <input class="addALiftInput" type="number" id="repsCompleted"
+                            placeholder="Number of Repetitions" required>
+                    </div>
 
-                <div>
-                    <label>RPE</label>
-                    <input class="addALiftInput" type="number" id="rpeExertion" min="1" max="10"
-                        placeholder="Rating of Perceived Exertion 1-10" required>
-                </div>
+                    <div>
+                        <label>RPE</label>
+                        <input class="addALiftInput" type="number" id="rpeExertion" min="1" max="10"
+                            placeholder="Perceived Exertion 1-10" required>
+                    </div>
 
-                <div>
-                    <label>Additional Notes</label>
-                    <textarea class="addALiftInput" id="liftNotes" rows="3" cols="30" maxlength="200"
-                        placeholder="Max 200 characters"></textarea>
-                </div>
+                    <div>
+                        <button type="submit">Add Lift</button>
+                    </div>
+                </form>
+            </section>
 
-                <div>
-                    <div class="buttonBkg"><button type="submit">Add Lift</button></div>
-                </div>
-            </form>
-        </section>
+            <section>
+                <form id="viewLiftsForm" class="formCard">
+                    <h2 id="viewLiftsHeading">View Lifts</h2>
+                    <div>
+                        <select id="viewUserEmail" class="hidden">
+                            <option selected>
+                                <%= email %>
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="viewLiftType">Lift Type:</label>
+                        <br>
+                        <select id="viewLiftType" required>
+                            <option value="Squat" selected>Squat</option>
+                            <option value="Bench">Bench</option>
+                            <option value="Deadlift">Deadlift</option>
+                        </select>
+                        <div>
+                            <button id="viewLiftsButton" type="submit" form="viewLiftsForm">View Lifts</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
 
-        <section id="liftHistoryRow">
-            <h2>Lift History</h2>
-        </section>
-    </main>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+            <section id="chartRow"></section>
+
+            <section id="liftHistoryRow"></section>
+
+        </main>
+    </div>
+    <script src="/axios"></script>
     <script src="/jsHome"></script>
 </body>
 

@@ -55,18 +55,35 @@ module.exports = {
             })
 
         await sequelize.query(`
-        INSERT INTO lifts (user_id, lift_name, weight, reps, rpe, add_date, lift_notes)
-        VALUES ('${userId}','${liftType}', '${weightAmount}', '${repsCompleted}', '${rpeExertion}', '${date}', '${liftNotes}');
+        INSERT INTO lifts (user_id, lift_name, weight, reps, rpe, add_date)
+        VALUES ('${userId}','${liftType}', '${weightAmount}', '${repsCompleted}', '${rpeExertion}', '${date}');
         `)
             .then(dbRes => {
                 try {
                     console.log(`lift added`)
-                    res.send(200)
+                    res.sendStatus(200)
                 } catch {
                     console.log("error adding lift")
-                    res.send(400)
+                    res.sendStatus(400)
                 }
             })
             .catch(err => console.log(err))
+    },
+    retrieveLifts: async (req, res) => {
+        let userId;
+        await sequelize.query(`
+        SELECT * FROM users
+        WHERE email = '${req.body.userEmail}'
+        `)
+            .then(dbRes => {
+                // console.log(dbRes[0][0])
+                userId = dbRes[0][0].user_id
+            })
+
+        await sequelize.query(`
+        SELECT * FROM lifts
+        WHERE user_id = '${userId}' AND lift_name = '${req.body.liftType}'
+        `)
+            .then(dbRes => res.send(dbRes[0]))
     }
 }

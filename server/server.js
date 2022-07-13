@@ -1,10 +1,7 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-}
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
-const { registerUser, addLift } = require('./controller.js')
+const { registerUser, addLift, retrieveLifts } = require('./controller.js')
 const { getUsers } = require('./utils.js')
-
 
 const express = require('express')
 const path = require('path')
@@ -54,9 +51,10 @@ app.get('/jsHome', (req, res) => res.sendFile(path.join(__dirname, '../public/ho
 
 app.get('/axios', (req, res) => res.sendFile(path.join(__dirname, '../config/axios-config.js')))
 
-/////////////////// ADD LIFT FORM ENDPOINTS ///////////////////
+/////////////////// FORM ENDPOINTS ///////////////////
 
 app.post("/api/lifts", addLift)
+app.post("/api/view-lifts", retrieveLifts)
 
 /////////////////// USER ACCOUNT ///////////////////
 
