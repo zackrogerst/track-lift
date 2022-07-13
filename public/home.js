@@ -13,10 +13,6 @@ const rpeExertion = document.getElementById("rpeExertion");
 const clearDivCallback = elm => elm.innerHTML = ``;
 const errCallback = err => console.log(err.response.data);
 
-const appendLifts = (body) => {
-
-}
-
 ////////////////// ADD LIFT //////////////////
 
 const addALiftHeading = document.getElementById("addALiftHeading");
@@ -28,8 +24,6 @@ function sendNewLift(body) {
             setTimeout(() => {
                 addALiftHeading.textContent = `Add a Lift`;
             }, 4000)
-
-            // Add lift to history;
         })
         .catch(errCallback);
 }
@@ -113,8 +107,8 @@ function getLifts(body) {
                 let maxWeight = Math.max(...weightsArr) + 30;
                 let minWeight = Math.min(...weightsArr) - 30;
 
-                var xValues = dateArr;
-                var yValues = weightsArr;
+                let xValues = dateArr.reverse();
+                let yValues = weightsArr.reverse();
 
                 let myChart = new Chart(ctx, {
                     type: "line",
@@ -126,6 +120,7 @@ function getLifts(body) {
                             backgroundColor: "#33e602",
                             borderColor: "#33e6027b",
                             borderWidth: "1",
+                            borderJoinStyle: "bevel",
                             data: yValues
                         }]
                     },
@@ -184,7 +179,7 @@ function getLifts(body) {
                 newTRh.appendChild(rpeHead)
 
 
-                for (let i = liftsArr.length - 1; i >= 0; i--) {
+                for (let i = 0; i < liftsArr.length; i++) {
                     let newTr = document.createElement('tr')
                     liftsTable.appendChild(newTr)
 

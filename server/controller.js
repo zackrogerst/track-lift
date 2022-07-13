@@ -76,13 +76,13 @@ module.exports = {
         WHERE email = '${req.body.userEmail}'
         `)
             .then(dbRes => {
-                // console.log(dbRes[0][0])
                 userId = dbRes[0][0].user_id
             })
 
         await sequelize.query(`
         SELECT * FROM lifts
         WHERE user_id = '${userId}' AND lift_name = '${req.body.liftType}'
+        LIMIT 100;
         `)
             .then(dbRes => res.send(dbRes[0]))
     }
