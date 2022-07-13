@@ -95,6 +95,7 @@ button {
 	font-size: 16px;
 	font-weight: 900;
 	border: 1px solid transparent;
+	cursor: pointer;
 }
 
 button:hover {
@@ -119,6 +120,10 @@ option {
 	border-left: 5px solid var(--highlight-color);
 	background-color: var(--main-color);
 	color: white;
+}
+
+select {
+	cursor: pointer;
 }
 
 label {
@@ -156,6 +161,7 @@ h3 {
 
 a {
 	text-decoration: underline 2px var(--highlight-color);
+	cursor: pointer;
 }
 
 a:visited {
@@ -308,6 +314,7 @@ td {
 	justify-content: center;
 	align-items: center;
 	transition: 500ms;
+	cursor: grabbing;
 }
 
 #barbellIcon:hover {
@@ -366,8 +373,6 @@ td {
 	width: 200px;
 	margin: 10px 0;
 }
-
-
 
 #displayContainer {
 	display: flex;
