@@ -116,7 +116,6 @@ option {
 	width: 60%;
 	margin: 2px 0px;
 	padding: 0px 10px;
-	border: 1px solid var(--main-color);
 	border-left: 5px solid var(--highlight-color);
 	background-color: var(--main-color);
 	color: white;
@@ -303,6 +302,18 @@ td {
 	align-items: center;
 }
 
+#barbellIcon {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 500ms;
+}
+
+#barbellIcon:hover {
+	transform: translateY(-40px);
+}
+
 #lgBlock {
 	width: 10px;
 	height: 55px;
@@ -329,7 +340,7 @@ td {
 
 #wideBlock {
 	width: 33%;
-	height: 9px;
+	height: 6px;
 	background-color: var(--darker-color);
 }
 
@@ -349,8 +360,6 @@ td {
 	justify-content: start;
 	align-items: center;
 	gap: 20px;
-	background-color: #0a081e;
-	padding: 20px 0 20px 40px;
 }
 
 #viewLiftsForm select {
@@ -367,7 +376,7 @@ td {
 
 
 #chartRow {
-	padding: 40px;
+	padding: 0 0 20px 20px;
 	width: 100%;
 	flex-shrink: 1;
 }
@@ -377,7 +386,7 @@ td {
 }
 
 #liftHistoryRow {
-	height: 500px;
+	height: 510px;
 	min-width: max-content;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -385,6 +394,19 @@ td {
 
 #chartRow h2 {
 	padding: 0 20px 20px 20px;
+}
+
+#getHolder {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+#getAllLiftsBtn {
+	width: 200px;
+	margin: 2px;
 }
 
 /* ^^^ HOME SPECIFIC ^^^ */

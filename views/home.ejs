@@ -30,8 +30,6 @@
 
     <div id="container">
         <main id="homeMain">
-
-
             <section id="homeDashboard">
                 <form id="addALift" class="formCard">
                     <h2 id="addALiftHeading">Add a Lift</h2>
@@ -75,39 +73,43 @@
                     </div>
                 </form>
                 <section id="backgroundArt">
-                    <div id="tinyBlock"></div>
-                    <div id="smBlock"></div>
-                    <div id="mdBlock"></div>
-                    <div id="lgBlock"></div>
-                    <div id="wideBlock"></div>
-                    <div id="lgBlock"></div>
-                    <div id="mdBlock"></div>
-                    <div id="smBlock"></div>
-                    <div id="tinyBlock"></div>
+                    <article id="barbellIcon">
+                        <div id="tinyBlock"></div>
+                        <div id="smBlock"></div>
+                        <div id="mdBlock"></div>
+                        <div id="lgBlock"></div>
+                        <div id="wideBlock"></div>
+                        <div id="lgBlock"></div>
+                        <div id="mdBlock"></div>
+                        <div id="smBlock"></div>
+                        <div id="tinyBlock"></div>
+                    </article>
                 </section>
             </section>
 
-
-            <form id="viewLiftsForm">
-                <h2 id="viewLiftsHeading">View Lifts</h2>
-                <div>
-                    <select id="viewUserEmail" class="hidden">
-                        <option selected>
-                            <%= email %>
-                        </option>
-                    </select>
-                </div>
-                <div>
-                    <select id="viewLiftType" required>
-                        <option value="Squat" selected>Squat</option>
-                        <option value="Bench">Bench</option>
-                        <option value="Deadlift">Deadlift</option>
-                    </select>
-                </div>
-                <div>
-                    <button id="viewLiftsButton" type="submit" form="viewLiftsForm">View</button>
-                </div>
-            </form>
+            <section id="getHolder">
+                <form id="viewLiftsForm">
+                    <h2 id="viewLiftsHeading">View Lifts</h2>
+                    <div>
+                        <select id="viewUserEmail" class="hidden">
+                            <option selected>
+                                <%= email %>
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id="viewLiftType" required>
+                            <option value="Squat" selected>Squat</option>
+                            <option value="Bench">Bench</option>
+                            <option value="Deadlift">Deadlift</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button id="viewLiftsButton" type="submit" form="viewLiftsForm">View</button>
+                    </div>
+                </form>
+                    <!-- <button id="getAllLiftsBtn">Get All Lifts</button> -->
+            </section>
 
             <section id="displayContainer">
                 <article id="liftHistoryRow" class="hidden"></article>

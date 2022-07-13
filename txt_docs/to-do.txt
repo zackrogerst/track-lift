@@ -1,0 +1,5 @@
+register: 
+1. query database using sequelize for form inputs, return those to the server
+2. check if exists already, 
+	if yes, error
+	if no, add to database then redirect to login.

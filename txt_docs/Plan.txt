@@ -1,0 +1,23 @@
+//////// High-Level Plan:
+
+//// MVP:
+registration form (post new user to db),
+login: view, edit, delete account (get, put, delete)
+
+
+//// MVP++:
+Features: 
+    Interactive page with minimal typing (counters, selectors for lifts).
+    High contrast styling for viewing in bright gym with low screen brightness.
+
+User Can:
+    add lift, (post)
+    edit lift, (put)
+    delete lift, (delete)
+    view specific lifts (get)
+    view history of lifts, (get)
+    view total per lift gains % over x time.
+
+DB Tables:
+    users        -- user_id (s p-key), username, email, pass
+    user_lifts   -- lift_id (s p-key), user_id (f-key), reps, weight, type/name, pr
