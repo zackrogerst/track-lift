@@ -260,6 +260,7 @@ td {
 
 .logoText {
 	padding-left: 10px;
+	padding-right: 20px;
 	font-size: 55px;
 	font-weight: 900;
 }
@@ -341,7 +342,7 @@ td {
 
 #tinyBlock {
 	width: 10px;
-	height: 9px;
+	height: 6px;
 	background-color: var(--darker-color);
 }
 
@@ -370,6 +371,7 @@ td {
 }
 
 #viewLiftsForm select {
+	background-color: var(--darker-color);
 	width: 200px;
 	margin: 10px 0;
 }
