@@ -82,6 +82,7 @@ module.exports = {
         await sequelize.query(`
         SELECT * FROM lifts
         WHERE user_id = '${userId}' AND lift_name = '${req.body.liftType}'
+        ORDER BY lift_id ASC
         LIMIT 100;
         `)
             .then(dbRes => res.send(dbRes[0]))

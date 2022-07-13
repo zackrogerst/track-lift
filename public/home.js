@@ -107,8 +107,8 @@ function getLifts(body) {
                 let maxWeight = Math.max(...weightsArr) + 30;
                 let minWeight = Math.min(...weightsArr) - 30;
 
-                let xValues = dateArr.reverse();
-                let yValues = weightsArr.reverse();
+                let xValues = dateArr;
+                let yValues = weightsArr;
 
                 let myChart = new Chart(ctx, {
                     type: "line",
@@ -179,7 +179,7 @@ function getLifts(body) {
                 newTRh.appendChild(rpeHead)
 
 
-                for (let i = 0; i < liftsArr.length; i++) {
+                for (let i = liftsArr.length - 1; i >= 0; i--) {
                     let newTr = document.createElement('tr')
                     liftsTable.appendChild(newTr)
 
