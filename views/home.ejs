@@ -19,20 +19,18 @@
             <div id="lgGrid"></div>
             <p class="logoText">TRACKLIFT</p>
         </article>
-        <form action="/logout?_method=DELETE" method="POST">
-            <button id="logoutBtn" type="submit">Log Out</button>
-        </form>
+        <section id="heroSection">
+            <h3>Welcome To Your Tracklift Dashboard, <%= name %>
+            </h3>
+            <form action="/logout?_method=DELETE" method="POST">
+                <button id="logoutBtn" type="submit">Log Out</button>
+            </form>
+        </section>
     </header>
 
     <div id="container">
         <main id="homeMain">
-            <section id="heroSection">
-                <h1>Welcome To Your Tracklift Dashboard, <%= name %>
-                </h1>
-                <form action="/logout?_method=DELETE" method="POST">
-                    <button id="logoutBtn" type="submit">Log Out</button>
-                </form>
-            </section>
+
 
             <section id="homeDashboard">
                 <form id="addALift" class="formCard">
@@ -76,37 +74,46 @@
                         <button type="submit">Add Lift</button>
                     </div>
                 </form>
+                <section id="backgroundArt">
+                    <div id="tinyBlock"></div>
+                    <div id="smBlock"></div>
+                    <div id="mdBlock"></div>
+                    <div id="lgBlock"></div>
+                    <div id="wideBlock"></div>
+                    <div id="lgBlock"></div>
+                    <div id="mdBlock"></div>
+                    <div id="smBlock"></div>
+                    <div id="tinyBlock"></div>
+                </section>
             </section>
 
-            <section>
-                <form id="viewLiftsForm" class="formCard">
-                    <h2 id="viewLiftsHeading">View Lifts</h2>
-                    <div>
-                        <select id="viewUserEmail" class="hidden">
-                            <option selected>
-                                <%= email %>
-                            </option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="viewLiftType">Lift Type:</label>
-                        <br>
-                        <select id="viewLiftType" required>
-                            <option value="Squat" selected>Squat</option>
-                            <option value="Bench">Bench</option>
-                            <option value="Deadlift">Deadlift</option>
-                        </select>
-                        <div>
-                            <button id="viewLiftsButton" type="submit" form="viewLiftsForm">View Lifts</button>
-                        </div>
-                    </div>
-                </form>
+
+            <form id="viewLiftsForm">
+                <h2 id="viewLiftsHeading">View Lifts</h2>
+                <div>
+                    <select id="viewUserEmail" class="hidden">
+                        <option selected>
+                            <%= email %>
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <select id="viewLiftType" required>
+                        <option value="Squat" selected>Squat</option>
+                        <option value="Bench">Bench</option>
+                        <option value="Deadlift">Deadlift</option>
+                    </select>
+                </div>
+                <div>
+                    <button id="viewLiftsButton" type="submit" form="viewLiftsForm">View</button>
+                </div>
+            </form>
+
+            <section id="displayContainer">
+                <article id="liftHistoryRow" class="hidden"></article>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+                <article id="chartRow"></article>
             </section>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-            <section id="chartRow"></section>
-
-            <section id="liftHistoryRow"></section>
 
         </main>
     </div>

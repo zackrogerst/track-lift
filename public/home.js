@@ -69,42 +69,54 @@ const viewUserEmail = document.getElementById("viewUserEmail");
 const viewLiftType = document.getElementById("viewLiftType");
 const liftHistoryRow = document.getElementById("liftHistoryRow");
 const chartRow = document.getElementById("chartRow");
-let myChart;
 
 function getLifts(body) {
+
+    if (liftHistoryRow.classList.contains("hidden")) {
+        liftHistoryRow.classList.remove("hidden")
+    }
     axios.post(`/api/view-lifts`, body)
         .then(res => {
 
             let liftsArr = res.data
-            console.log(liftsArr)
+
+            clearDivCallback(liftHistoryRow)
+            clearDivCallback(chartRow)
 
             if (liftsArr.length === 0) {
 
-                clearDivCallback(liftHistoryRow)
-                clearDivCallback(chartRow)
+                let h2 = document.createElement('h2')
+                h2.textContent = `No ${body.liftType} Available!`
+                chartRow.appendChild(h2)
+
+                if (!liftHistoryRow.classList.contains("hidden")) {
+                    liftHistoryRow.classList.add("hidden")
+                }
+            } else {
 
                 let h2 = document.createElement('h2')
-                h2.textContent = `No Lifts Available!`
-                liftHistoryRow.appendChild(h2)
-            } else {
+                h2.textContent = `${liftsArr[0].lift_name} History`
+                chartRow.appendChild(h2)
+
                 let chartCanvas = document.createElement('canvas');
                 chartCanvas.setAttribute('id', 'myChart')
                 chartRow.appendChild(chartCanvas)
 
                 const ctx = document.getElementById('myChart').getContext('2d');
 
+
                 clearDivCallback(liftHistoryRow)
 
                 let weightsArr = liftsArr.map((e, i, a) => a[i].weight)
                 let dateArr = liftsArr.map((e, i, a) => a[i].add_date)
 
-                let maxWeight = Math.max(...weightsArr) + 20;
-                let minWeight = Math.min(...weightsArr) - 20;
+                let maxWeight = Math.max(...weightsArr) + 30;
+                let minWeight = Math.min(...weightsArr) - 30;
 
                 var xValues = dateArr;
                 var yValues = weightsArr;
 
-                myChart = new Chart(ctx, {
+                let myChart = new Chart(ctx, {
                     type: "line",
                     data: {
                         labels: xValues,
@@ -125,6 +137,7 @@ function getLifts(body) {
                             yAxes: [{
                                 ticks: {
                                     fontColor: "white",
+                                    fontSize: "15",
                                     min: minWeight,
                                     max: maxWeight
                                 },
@@ -135,7 +148,8 @@ function getLifts(body) {
                             }],
                             xAxes: [{
                                 ticks: {
-                                    fontColor: "white"
+                                    fontColor: "white",
+                                    fontSize: "15"
                                 },
                                 gridLines: {
                                     color: '#202857',
@@ -145,11 +159,6 @@ function getLifts(body) {
                         }
                     }
                 });
-
-
-                let h2 = document.createElement('h2')
-                h2.textContent = `${liftsArr[0].lift_name} History`
-                liftHistoryRow.appendChild(h2)
 
                 let newTable = document.createElement('table')
                 newTable.setAttribute('id', 'liftsTable')
@@ -175,7 +184,7 @@ function getLifts(body) {
                 newTRh.appendChild(rpeHead)
 
 
-                for (let i = 0; i < liftsArr.length; i++) {
+                for (let i = liftsArr.length - 1; i >= 0; i--) {
                     let newTr = document.createElement('tr')
                     liftsTable.appendChild(newTr)
 
